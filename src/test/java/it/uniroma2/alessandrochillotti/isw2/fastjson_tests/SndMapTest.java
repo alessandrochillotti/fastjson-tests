@@ -17,7 +17,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 
 @RunWith(Parameterized.class)
-public class MapTest {
+public class SndMapTest {
 	private String text;
 	private Map<Object, Object> expected_map;
 	
@@ -45,7 +45,7 @@ public class MapTest {
 		return expected_map;
 	}
 	
-	public MapTest(String text, Map<Object, Object> expected_map) {
+	public SndMapTest(String text, Map<Object, Object> expected_map) {
 		this.text = text;
 		this.expected_map = expected_map;
 	}
