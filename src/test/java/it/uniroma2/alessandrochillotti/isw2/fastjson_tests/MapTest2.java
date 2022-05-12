@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -30,8 +29,9 @@ public class MapTest2 {
         });
     }
 	
-	@Before
-	public void configure() {
+	public void configure(String text, Map<Object, Object> expected_map) {
+		this.text = text;
+		this.expected_map = expected_map;			
 		map = JSON.parseObject(this.text, new TypeReference<Map<Object, Object>>() {});
 	}
 	
@@ -46,8 +46,7 @@ public class MapTest2 {
 	}
 	
 	public MapTest2(String text, Map<Object, Object> expected_map) {
-		this.text = text;
-		this.expected_map = expected_map;
+		configure(text, expected_map);
 	}
 	
 	@Test

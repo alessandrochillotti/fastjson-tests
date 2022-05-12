@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -33,15 +32,15 @@ public class OrderedFieldTest {
         });
     }
 	
-	@Before
-	public void configure() {
+	public void configure(String text, Feature feature, int expected_id) {
+		this.text = text;
+		this.feature = feature;
+		this.expected_id = expected_id;
 		model = JSON.parseObject(this.text, Model.class, this.feature);
 	}
 	
 	public OrderedFieldTest(String text, Feature feature, int expected_id) {
-		this.text = text;
-		this.feature = feature;
-		this.expected_id = expected_id;
+		configure(text, feature, expected_id);
 	}
 	
 	@Test
