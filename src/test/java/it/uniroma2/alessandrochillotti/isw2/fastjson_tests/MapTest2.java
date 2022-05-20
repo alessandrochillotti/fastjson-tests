@@ -25,7 +25,7 @@ public class MapTest2 {
 	@Parameters
 	public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
-                { "{1:\"2\",\"3\":4,'5':6}", build_expected_map() } // text, expected map
+        	{ "{1:\"2\",\"3\":4,'5':6}", build_expected_map(Map.entry(1, "2"), Map.entry("3", 4), Map.entry("5", 6)) } // text, expected map
         });
     }
 	
@@ -35,12 +35,11 @@ public class MapTest2 {
 		map = JSON.parseObject(this.text, new TypeReference<Map<Object, Object>>() {});
 	}
 	
-	private static Map<Object, Object> build_expected_map() {
+	private static Map<Object, Object> build_expected_map(Entry<Object,Object>... elements) {
 		Map<Object,Object> expected_map = new HashMap<>();
 		
-		expected_map.put(1, "2");
-		expected_map.put("3", 4);
-		expected_map.put("5", 6);
+		for (Entry<Object,Object> entry : elements)
+			expected_map.put(entry.getKey(), entry.getValue());
 		
 		return expected_map;
 	}
